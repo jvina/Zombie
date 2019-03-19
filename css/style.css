@@ -1,0 +1,33 @@
+#zombie{
+    position: absolute;
+    top: 40%;
+    left: 45%;
+}
+body {
+    background-color: black;
+}
+#clickme {
+    color:white;
+    font-family: monospace;
+    position: absolute;
+    left: 50%;
+    text-align: center;
+    width: 100px;
+    height: 50px;
+    margin-left: -50px; 
+    margin-top: 15px; 
+    
+}
+#quit {
+    position: absolute;
+    bottom: 2%;
+    left: 50%;
+    margin-left: -50px;
+    width: 100px;
+    margin-bottom: 25px;
+}
+#zombie2{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+}

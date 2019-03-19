@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+    </head>
+    <body>
+        <img id="zombie" src="images/zombie.png">
+        <img id="zombie2" src="images/zombie.png">
+        <h2 id="clickme">Score: 0</h2>
+        <audio id="myaudio"><source src="src/man-dying.wav" type="audio/mpeg"></audio>
+        <button id="quit"><b>Restart</b></button>
+    
+        <script>
+            let zombie_image = document.getElementById("zombie").src;
+            let zombie2_image = document.getElementById("zombie2").src;
+            let fire = "images/fire.png"
+            let click = -2;
+            let x_zombie_1 = window.innerWidth - 850;
+            let y_zombie_1 = window.innerHeight - 500;
+            let x_zombie_2 = window.innerWidth - 700;
+            let y_zombie_2 = window.innerHeight - 450;
+            
+            function zombie(){
+                let width = window.innerWidth
+                let height = window.innerHeight
+                let x = Math.floor(Math.random()*(width-128) + 1)
+                let y = Math.floor(Math.random()*(height-128) + 1)
+
+                document.getElementById("zombie").style.top = y + 'px';
+                document.getElementById('zombie').style.left = x + 'px';
+                document.getElementById('zombie').src = zombie_image;
+            }
+                setInterval(zombie, 2000);
+                document.getElementById("zombie").onclick = explode;
+            
+            
+            function explode(){
+                document.getElementById('zombie').src = fire;
+                click ++;
+                document.getElementById('clickme').innerHTML = "Score:" + " " + click;
+                let sound = document.getElementById('myaudio');
+                sound.play(),1;
+            }
+                setTimeout(explode, 50);
+
+
+            function zombie2(){
+                let width = window.innerWidth
+                let height = window.innerHeight
+                let a = Math.floor(Math.random()*(width-128) + 1)
+                let b = Math.floor(Math.random()*(height-128) + 1)
+
+                document.getElementById("zombie2").style.top = b + 'px';
+                document.getElementById('zombie2').style.left = a + 'px';
+                document.getElementById('zombie2').src = zombie2_image;
+            }
+                setInterval(zombie2, 2000);
+                document.getElementById("zombie2").onclick = explode2;
+        
+
+            function explode2(){
+                document.getElementById('zombie2').src = fire;
+                click++;
+                document.getElementById('clickme').innerHTML = "Score:" + " " + click;
+                let sound = document.getElementById('myaudio');
+                sound.play(),2;
+            }
+                setTimeout(explode2, 50);
+
+
+            let zeroScore = 0;
+            function zero_score(){ 
+                document.getElementById('clickme').innerHTML = "Score: " + " " + zeroScore;
+                document.getElementById("zombie").style.top = y_zombie_1 + 'px';
+                document.getElementById('zombie').style.left = x_zombie_1 + 'px';  
+                document.getElementById('zombie2').style.top = y_zombie_2 + 'px';
+                document.getElementById('zombie2').style.left = x_zombie_2 + 'px';
+                window.location.reload();
+            }
+                document.getElementById('quit').onclick = zero_score;
+                
+           
+        </script>
+    </body>
+</html>
